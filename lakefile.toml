@@ -1,13 +1,9 @@
 name = "LukuteoriaBlueprint"
 version = "0.1.0"
-defaultTargets = ["lukuteoriablueprint"]
+defaultTargets = ["LukuteoriaBlueprint"]
 
 [[lean_lib]]
 name = "LukuteoriaBlueprint"
-
-[[lean_exe]]
-name = "lukuteoriablueprint"
-root = "Main"
 
 [[require]]
 name = "checkdecls"
