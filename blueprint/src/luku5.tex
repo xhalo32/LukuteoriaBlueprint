@@ -1,0 +1,47 @@
+\chapter{Ensimmäisen asteen Diofantoksen  yhtälöt}
+
+\begin{notation}
+    $(a, b)$ tarkoittaa $\mathrm{syt}(a, b)$.
+\end{notation}
+
+\begin{remark}
+    Jos $a, b$ jaetut alkutekijät ovat $p_1, ..., p_l$, voidaan kirjoittaa
+
+    \[
+    a = p_1^{\alpha_1} ... p_l^{\alpha_l} \
+    b = p_1^{\beta_1} ... p_l^{\beta_l}
+    \]
+\end{remark}
+
+\begin{lemma}[Yksikäsitteinen jako]
+    Jos $a \geq b \geq 1$ niin on olemassa yksikäsitteiset $k$ ja $r < b$, joille
+
+    \[
+        a = k b + r.
+    \]
+\end{lemma}
+\begin{proof}
+    Huomataan, että $\exists r < b, a = k b + r$ on ekvivalentti sen kanssa, että $k b \leq a \lt (k + q) b$ kaikilla $k$.
+
+    $a$ sijoittuu joidenkin lukujen $b, 2b, 3b, ...$ väliin jollakin $k$, eli $k b \leq a \leq (k + 1) b$.
+\end{proof}
+
+\begin{lemma}
+    $a \gt b \geq 1$, silloin $(a, b) = (a - b, b)$.
+\end{lemma}
+\begin{proof}
+    Olkoon $d := (a, b)$ ja $d' := (a - b, b)$.
+    Tiedetään, että $d \mid a$ ja $d \mid b$, joten $d \mid (a - b)$.
+    Tästä saadaan $d \leq d'$.
+    
+    Toisaalta, $d' \mid b$ ja sillä $d' \mid a - b$ niin $d' \mid a$.
+    Tästä saadaan $d' \leq d$.
+\end{proof}
+
+\begin{remark}
+    Jos $a = k b + r$ niin
+
+    \[
+    (a, b) = (a - k b, b) = (r, b) = (b, r)
+    \]
+\end{remark}

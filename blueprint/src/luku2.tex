@@ -1,0 +1,188 @@
+\chapter{Jaollisuus ja alkuluvut}
+
+\begin{lemma}[Alkuluku]
+    \label{prime_def}
+    \lean{Nat.prime_def}
+    \leanok
+    Luku $p \in \N$ on alkuluku, jos ja vain jos se on vähintään $2$ ja sen ainoat tekijät ovat $1$ ja $p$.
+    Ehto esitetään formaalisti muodossa
+
+    \[
+    2 \leq p \land \forall m, m \mid p \to m = 1 \lor m = p
+    \]
+\end{lemma}
+\begin{proof}
+    \leanok
+\end{proof}
+
+\section{Lemmoja}
+
+\begin{lemma}
+    \label{prime_dvd_iff_gcd_eq_one}
+    \lean{NumberTheory.prime_dvd_iff_gcd_eq_one}
+    \leanok
+    Olkoon $p$ alkuluku ja $n \in \N$. $p \not\mid n$ jos ja vain jos $\syt(p, n) = 1$.
+\end{lemma}
+\begin{proof}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{prime_dvd_mul}
+    \lean{NumberTheory.prime_dvd_mul}
+    \leanok
+    Olkoon $p$ alkuluku ja $m, n \in \N$. Jos $p \mid n m$ niin $p \mid n$ tai $p \mid m$.
+\end{lemma}
+\begin{proof}
+    \uses{prime_dvd_iff_gcd_eq_one}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{infinite_setOf_prime}
+    \lean{NumberTheory.infinite_setOf_prime}
+    \leanok
+    Alkulukujen $\PP = \set{p \mid \Prime~p}$ joukko on ääretön.
+\end{lemma}
+\begin{proof}
+    \leanok
+\end{proof}
+
+\begin{variable}
+    Olkoon $m, n, p, q, i \in \N$.
+\end{variable}
+
+\begin{notation}
+    $p_i$ on järjestyslukua $i$ vastaava alkuluku.
+\end{notation}
+
+\begin{lemma}
+    \label{exists_nth_prime}
+    \lean{NumberTheory.exists_nth_prime}
+    \leanok
+    Jos $p$ alkuluku, niin on olemassa $i$ siten että $p = p_i$.
+\end{lemma}
+\begin{proof}
+    \uses{infinite_setOf_prime}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{dvd_prime}
+    \lean{NumberTheory.dvd_prime}
+    \leanok
+    Jos $p$ alkuluku, niin $m \mid p$ jos ja vain jos $m = 1$ tai $m = p$.
+\end{lemma}
+\begin{proof}
+    \uses{prime_def}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{dvd_prime_two_le}
+    \lean{NumberTheory.dvd_prime_two_le}
+    \leanok
+    Jos $p$ alkuluku ja $2 \leq m$, niin $m \mid p$ jos ja vain jos $m = p$.
+\end{lemma}
+\begin{proof}
+    \uses{dvd_prime}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{prime_dvd_prime_iff}
+    \lean{NumberTheory.prime_dvd_prime_iff}
+    \leanok
+    Jos $p, q$ alkulukuja, niin $p \mid q$ jos ja vain jos $p = q$.
+\end{lemma}
+\begin{proof}
+    \uses{dvd_prime_two_le}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{prime_pow_congr}
+    \lean{NumberTheory.prime_pow_congr}
+    \leanok
+    Jos $p, q$ alkulukuja siten että $p^n = q$, niin $p = q$ ja $n = 1$.
+\end{lemma}
+\begin{proof}
+    \uses{prime_dvd_prime_iff}
+    \leanok
+\end{proof}
+
+\section{Alkutekijähajotelma}
+
+\begin{definition}[Alkutekijähajotelma]
+    \label{PD}
+    \lean{NumberTheory.PD}
+    \leanok
+    Funktio $\alpha : \N \to \N$ on luvun $n$ alkutekijähajotelma, jos
+    \begin{itemize}
+        \item $\alpha$ kantaja $s$ on äärellinen joukko,
+        \item $\prod_{i \in s} p_i^{\alpha_i} = n$.
+    \end{itemize}
+\end{definition}
+
+\begin{variable}
+    Olkoon $\alpha, \beta$ alkutekijähajotelmia.
+\end{variable}
+
+\begin{lemma}
+    \label{prod_dvd_prod_of_subset}
+    \lean{Finset.prod_dvd_prod_of_subset}
+    \leanok
+    Olkoon $s, t \in \powerset(\N)$ äärellisiä joukkoja ja $f : \N \to \N$.
+    Jos $s \subseteq t$, niin
+
+    \[
+    \prod_{n \in s} f(n) \mid \prod_{n \in t} f(t).
+    \]
+\end{lemma}
+\begin{proof}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{prime_forall_support_eq}
+    \lean{NumberTheory.PD.prime_forall_support_eq}
+    \uses{PD}
+    \leanok
+    Jos $\alpha$ on $p_i$ alkutekijähajotelma, niin kaikilla $j \in \supp(\alpha)$ pätee $j = i$.
+\end{lemma}
+\begin{proof}
+    \uses{infinite_setOf_prime, prod_dvd_prod_of_subset, prime_pow_congr}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{prime_support_eq_singleton}
+    \lean{NumberTheory.PD.prime_support_eq_singleton}
+    \leanok
+    Jos $\alpha$ on $p_i$ alkutekijähajotelma, niin $\supp(\alpha) = \set{i}$.
+\end{lemma}
+\begin{proof}
+    \uses{prime_forall_support_eq}
+    \leanok
+\end{proof}
+
+\begin{lemma}
+    \label{prime}
+    \lean{NumberTheory.PD.prime}
+    \leanok
+    Jos $\alpha$ on $p_i$ alkutekijähajotelma, niin $\alpha_i = 1$ ja $\alpha_j = 0$ kaikilla $j \neq i$.
+\end{lemma}
+\begin{proof}
+    \uses{prime_support_eq_singleton}
+    \leanok
+\end{proof}
+
+\begin{theorem}
+    \label{unique}
+    \lean{NumberTheory.PD.unique}
+    \leanok
+    Jos $\alpha$ ja $\beta$ ovat $n$ alkutekijähajotelmia, niin $\alpha = \beta$.
+\end{theorem}
+\begin{proof}
+    \uses{exists_nth_prime, prime}
+\end{proof}

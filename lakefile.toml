@@ -1,0 +1,24 @@
+name = "LukuteoriaBlueprint"
+version = "0.1.0"
+defaultTargets = ["lukuteoriablueprint"]
+
+[[lean_lib]]
+name = "LukuteoriaBlueprint"
+
+[[lean_exe]]
+name = "lukuteoriablueprint"
+root = "Main"
+
+[[require]]
+name = "checkdecls"
+git = "https://github.com/PatrickMassot/checkdecls.git"
+
+[[require]]
+name = "«doc-gen4»"
+git = "https://github.com/leanprover/doc-gen4"
+rev = "main"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "c48ea032edff3019dfbc8b470828bdf6420fd1bf"
